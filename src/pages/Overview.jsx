@@ -92,7 +92,7 @@ const Overview = () => {
               }
             />
           </div>
-          <div className="grid grid-cols-2 gap-4 h-[40%]">
+          <div className="grid grid-cols-2 gap-4  ">
             <Card
               title="Creative Chaos"
               subtitle="All-Rounder"

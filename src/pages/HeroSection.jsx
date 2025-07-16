@@ -208,7 +208,7 @@ const HeroSection = () => {
             <TextTrail text="Kanika Singhal" />
           </div> */}
 
-          {/* <TextTrail
+          <TextTrail
             text="Kanika Singhal"
             fontFamily="Figtree"
             fontWeight="900"
@@ -222,7 +222,7 @@ const HeroSection = () => {
             backgroundColor="#1a1a2e"
             colorCycleInterval={2000}
             supersample={2}
-          /> */}
+          />
 
           {/* <ScrollVelocity
             texts={["Full Stack", "React.js", "Node.js", "MongoDB", "Tailwind", "AI", "OS Dev", "Open Source"]}
