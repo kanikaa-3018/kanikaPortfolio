@@ -46,7 +46,6 @@
 //   },
 // ];
 
-
 // const AchievementsSection = () => {
 //   return (
 //     <section className="w-full min-h-screen bg-black text-white px-6 sm:px-16 py-4 " id="achievements">
@@ -112,12 +111,12 @@
 
 // export default AchievementsSection;
 
-
 import React, { useState } from "react";
 import CardSwap, { Card } from "../components/CardSwap/CardSwap.jsx";
 import { FiAward } from "react-icons/fi";
 import TrueFocus from "../TextAnimations/TrueFocus/TrueFocus.jsx";
 import ReactCardFlip from "react-card-flip";
+import FlipCard from "../components/FlipCard/FlipCard.jsx";
 
 const achievements = [
   {
@@ -163,15 +162,14 @@ const achievements = [
 ];
 
 const AchievementsSection = () => {
-  // Keep an array of flip states for all cards
   const [flippedStates, setFlippedStates] = useState(
-    Array(achievements.length).fill(false)
+    achievements.map(() => false)
   );
 
   const handleFlip = (index) => {
-    const newStates = [...flippedStates];
-    newStates[index] = !newStates[index];
-    setFlippedStates(newStates);
+    setFlippedStates((prev) =>
+      prev.map((state, i) => (i === index ? !state : state))
+    );
   };
 
   return (
@@ -241,37 +239,33 @@ const AchievementsSection = () => {
         {/* MOBILE: 3D Flip Cards */}
         <div className="md:hidden flex flex-col gap-6 mt-8">
           {achievements.map((ach, i) => (
-            <ReactCardFlip
+            <FlipCard
               key={i}
               isFlipped={flippedStates[i]}
-              flipDirection="horizontal"
-            >
-              {/* FRONT SIDE */}
-              <div
-                className="bg-white/5 p-4 rounded-lg shadow border border-white/10 cursor-pointer transition-transform hover:scale-105"
-                onClick={() => handleFlip(i)}
-              >
-                <div className="flex items-center gap-2 mb-1">
-                  <FiAward className="text-yellow-400" />
-                  <h3 className="text-base font-semibold">{ach.title}</h3>
+              onFlip={() => handleFlip(i)}
+              front={
+                <div className="flex flex-col justify-center items-center">
+                  <div className="flex items-center gap-2 mb-1">
+                    <FiAward className="text-yellow-400" />
+                    <h3 className="text-base font-semibold">{ach.title}</h3>
+                  </div>
+                  <p className="text-xs text-gray-400 mt-2">Tap to view more</p>
                 </div>
-                <p className="text-xs text-gray-400">Tap to view more</p>
-              </div>
-
-              {/* BACK SIDE */}
-              <div
-                className="bg-white/10 p-4 rounded-lg shadow border border-white/10 cursor-pointer transition-transform hover:scale-105"
-                onClick={() => handleFlip(i)}
-              >
-                <p className="text-sm text-gray-200">{ach.description}</p>
-                <span className="text-xs text-blue-300 bg-blue-500/10 px-2 py-0.5 rounded mt-2 inline-block">
-                  {ach.tag}
-                </span>
-                <p className="text-xs text-gray-500 mt-2 italic">
-                  Tap to go back
-                </p>
-              </div>
-            </ReactCardFlip>
+              }
+              back={
+                <div className="flex flex-col justify-between h-full">
+                  <p className="text-sm text-gray-200">{ach.description}</p>
+                  <div>
+                    <span className="text-xs text-blue-300 bg-blue-500/10 px-2 py-0.5 rounded mt-2 inline-block">
+                      {ach.tag}
+                    </span>
+                    <p className="text-xs text-gray-500 mt-2 italic">
+                      Tap to go back
+                    </p>
+                  </div>
+                </div>
+              }
+            />
           ))}
         </div>
       </div>
