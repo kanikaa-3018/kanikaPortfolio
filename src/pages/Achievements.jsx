@@ -115,7 +115,6 @@ import React, { useState } from "react";
 import CardSwap, { Card } from "../components/CardSwap/CardSwap.jsx";
 import { FiAward } from "react-icons/fi";
 import TrueFocus from "../TextAnimations/TrueFocus/TrueFocus.jsx";
-import ReactCardFlip from "react-card-flip";
 import FlipCard from "../components/FlipCard/FlipCard.jsx";
 
 const achievements = [
