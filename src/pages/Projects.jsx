@@ -66,7 +66,7 @@ const projects = [
 ];
 
 const Projects = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [view, setView] = useState("grid");
   const [imageIndexes, setImageIndexes] = useState({});
 
@@ -173,7 +173,7 @@ const Projects = () => {
             }))}
           />
           <button
-            // onClick={() => navigate("/projects")}
+            onClick={() => navigate("/myprojects")}
             className="group relative inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-[#1f1f1f] via-[#2a2a2a] to-[#1a1a1a] text-white font-semibold shadow-md hover:shadow-xl transition duration-300 border border-white/10 hover:border-white/30 mt-8"
           >
             <span className="text-sm sm:text-base">Show Projects</span>
@@ -275,7 +275,7 @@ const Projects = () => {
           })}
 
           <button
-            // onClick={() => navigate("/projects")}
+            onClick={() => navigate("/myprojects")}
             className="group relative inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-[#1f1f1f] via-[#2a2a2a] to-[#1a1a1a] text-white font-semibold shadow-md hover:shadow-xl transition duration-300 border border-white/10 hover:border-white/30 mt-8"
           >
             <span className="text-sm sm:text-base">Show Projects</span>

@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
+
 import HeroSection from "./pages/HeroSection";
 import Overview from "./pages/Overview";
 import Navbar from "./components/Navbar";
@@ -9,25 +11,38 @@ import ExperienceSection from "./pages/Experience";
 import AchievementsSection from "./pages/Achievements";
 import ContactForm from "./pages/Contact";
 import Footer from "./pages/Footer";
-// (Optional) Remove these if not used
-// import reactLogo from "./assets/react.svg";
-// import viteLogo from "/vite.svg";
+import DetailedProjects from "./pages/DetailedProjects";
+import DetailedExperience from "./pages/DetailedExperience";
+import DetailedSkills from "./pages/DetailedSkills";
 
 function App() {
-  const [count, setCount] = useState(0); // You can remove this if you're not using it
-
   return (
-    <>
-    <Navbar/>
-      <HeroSection />
-      <Overview/>
-      <Skills/>
-      <Projects/>
-      {/* <ExperienceSection/> */}
-      <AchievementsSection/>
-      <ContactForm/>
-      <Footer/>
-    </>
+    <Router>
+      <Navbar />
+      <Routes>
+        {/* Home Page */}
+        <Route
+          path="/"
+          element={
+            <>
+              <HeroSection />
+              <Overview />
+              <Skills />
+              <Projects />
+              {/* <ExperienceSection /> */}
+              <AchievementsSection />
+              <ContactForm />
+              <Footer />
+            </>
+          }
+        />
+
+        {/* Detailed Projects Page */}
+        <Route path="/myprojects" element={<DetailedProjects />} />
+        <Route path="/myachievements" element={<DetailedExperience />} />
+        <Route path="/myskills" element={<DetailedSkills />} />
+      </Routes>
+    </Router>
   );
 }
 

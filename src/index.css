@@ -92,6 +92,16 @@
   }
 }
 
+/* Add to your global CSS */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+
 .shiny-border::before {
   content: "";
   position: absolute;
