@@ -145,20 +145,20 @@ const Overview = () => {
               
               <div className="relative border-l-2 border-cyan-500 pl-6 space-y-4 text-sm text-gray-300">
                 <div className="relative">
-                  <span className="absolute left-[-12px] top-1 w-3 h-3 bg-cyan-400 rounded-full animate-ping" />
+                  
                   <p>
                     ATF Fellow – <strong>AlgoUniversity, 2024</strong>
                   </p>
                 </div>
                 <div className="relative">
-                  <span className="absolute left-[-12px] top-1 w-3 h-3 bg-cyan-400 rounded-full animate-ping" />
+                  
                   <p>
                     Finalist – <strong>CodeClash Coding Contest</strong>
                   </p>
                 </div>
                 
                 <div className="relative">
-                  <span className="absolute left-[-12px] top-1 w-3 h-3 bg-cyan-400 rounded-full animate-ping" />
+                  
                   <p>
                     <strong>CodeChef Starters</strong> 3★ Contest – Top 2%
                   </p>

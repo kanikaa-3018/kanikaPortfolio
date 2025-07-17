@@ -17,6 +17,8 @@ import h2 from "../assets/h2.jpg";
 import h3 from "../assets/h3.png";
 import h4 from "../assets/h4.jpg";
 import h5 from "../assets/h5.jpg";
+import { FiArrowRight } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 
 const projects = [
   {
@@ -64,6 +66,7 @@ const projects = [
 ];
 
 const Projects = () => {
+  // const navigate = useNavigate();
   const [view, setView] = useState("grid");
   const [imageIndexes, setImageIndexes] = useState({});
 
@@ -82,36 +85,38 @@ const Projects = () => {
   };
 
   return (
-    <section className="w-full min-h-screen bg-black text-white px-6 sm:px-16 py-24" id="projects">
+    <section
+      className="w-full min-h-screen bg-black text-white px-6 sm:px-16 py-24"
+      id="projects"
+    >
       <div className="relative flex items-center justify-between mb-12">
-  {/* Centered Title */}
-  <h2 className="absolute left-1/2 transform -translate-x-1/2 text-4xl sm:text-5xl font-extrabold text-center">
-    Projects
-  </h2>
+        {/* Centered Title */}
+        <h2 className="absolute left-1/2 transform -translate-x-1/2 text-4xl sm:text-5xl font-extrabold text-center">
+          Projects
+        </h2>
 
-  {/* Toggle Buttons on the Right */}
-  <div className="ml-auto flex gap-4 text-xl">
-    <button
-      onClick={() => setView("grid")}
-      className={`p-2 rounded-full transition ${
-        view === "grid" ? "bg-white text-black" : "bg-white/10 text-white"
-      }`}
-      title="Grid View"
-    >
-      <FiGrid />
-    </button>
-    <button
-      onClick={() => setView("list")}
-      className={`p-2 rounded-full transition ${
-        view === "list" ? "bg-white text-black" : "bg-white/10 text-white"
-      }`}
-      title="List View"
-    >
-      <FiList />
-    </button>
-  </div>
-</div>
-
+        {/* Toggle Buttons on the Right */}
+        <div className="ml-auto flex gap-4 text-xl">
+          <button
+            onClick={() => setView("grid")}
+            className={`p-2 rounded-full transition ${
+              view === "grid" ? "bg-white text-black" : "bg-white/10 text-white"
+            }`}
+            title="Grid View"
+          >
+            <FiGrid />
+          </button>
+          <button
+            onClick={() => setView("list")}
+            className={`p-2 rounded-full transition ${
+              view === "list" ? "bg-white text-black" : "bg-white/10 text-white"
+            }`}
+            title="List View"
+          >
+            <FiList />
+          </button>
+        </div>
+      </div>
 
       {/* Grid view using ChromaGrid */}
       {view === "grid" ? (
@@ -167,6 +172,14 @@ const Projects = () => {
               url: proj.live,
             }))}
           />
+          <button
+            // onClick={() => navigate("/projects")}
+            className="group relative inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-[#1f1f1f] via-[#2a2a2a] to-[#1a1a1a] text-white font-semibold shadow-md hover:shadow-xl transition duration-300 border border-white/10 hover:border-white/30 mt-8"
+          >
+            <span className="text-sm sm:text-base">Show Projects</span>
+            <FiArrowRight className="group-hover:translate-x-1 transition-transform duration-300" />
+            <span className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-10 bg-white transition duration-300"></span>
+          </button>
         </div>
       ) : (
         // List view
@@ -260,6 +273,15 @@ const Projects = () => {
               </div>
             );
           })}
+
+          <button
+            // onClick={() => navigate("/projects")}
+            className="group relative inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-[#1f1f1f] via-[#2a2a2a] to-[#1a1a1a] text-white font-semibold shadow-md hover:shadow-xl transition duration-300 border border-white/10 hover:border-white/30 mt-8"
+          >
+            <span className="text-sm sm:text-base">Show Projects</span>
+            <FiArrowRight className="group-hover:translate-x-1 transition-transform duration-300" />
+            <span className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-10 bg-white transition duration-300"></span>
+          </button>
         </div>
       )}
     </section>

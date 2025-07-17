@@ -155,133 +155,145 @@
 
 // export default HeroSection;
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Squares from "../Backgrounds/Squares/Squares.jsx";
 import TextPressure from "../TextAnimations/TextPressure/TextPressure.jsx";
 import ShinyText from "../TextAnimations/ShinyText/ShinyText.jsx";
 import TypewriterEffect from "../components/TypeWriter.jsx";
 import ProfileCard from "../components/ProfileCard/ProfileCard.jsx";
 import GlareHover from "../Animations/GlareHover/GlareHover.jsx";
-import myimage from "../assets/myimage.jpg";
 import myimagehu from "../assets/myimagehu.jpg";
+import PixelTransition from "../Animations/PixelTransition/PixelTransition.jsx";
 import { FiDownload, FiSend } from "react-icons/fi";
-import ScrollVelocity from "../TextAnimations/ScrollVelocity/ScrollVelocity.jsx"; // Adjust path
-import TextTrail from "../TextAnimations/TextTrail/TextTrail.jsx";
 
 const HeroSection = () => {
-  const velocity = 1.8;
+  const [isFlipped, setIsFlipped] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsFlipped((prev) => !prev);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="relative flex flex-col md:flex-row items-center justify-between w-full min-h-screen bg-black px-6 sm:px-8 py-20 overflow-hidden">
-      {/* Background Squares */}
-      <div className="absolute inset-0 z-0 opacity-10">
-        <Squares
-          speed={0.5}
-          squareSize={30}
-          direction="diagonal"
-          borderColor="#ffffff22"
-          hoverFillColor="#222"
-        />
-      </div>
-
-      {/* Left Section */}
-      <div className="relative z-10 w-full md:w-1/2 flex flex-col gap-4 justify-center h-[300px] text-white">
-        {/* 👇 Mobile-only Animated Name + Skills */}
-        <div className=" md:hidden w-full flex flex-col items-center gap-4 text-center">
-          <img
-            src={myimagehu}
-            alt="Kanika"
-            className="w-32 h-32 mt-56 rounded-full object-cover border-4 border-white shadow-lg"
-          />
-
-          <h1
-            className="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-pink-400 to-purple-500 animate-fade-in-up"
+      
+      
+      {/* LEFT SECTION */}
+      <div className="relative z-10 w-full md:w-1/2 flex flex-col justify-center text-white">
+        {/* Mobile view: Pixel Flip */}
+        <div className="md:hidden mb-8 flex justify-center flex-col items-center ">
+          <div className="w-64 h-64 mt-4">
+            <PixelTransition
+              flipped={isFlipped}
+              className="rounded-xl overflow-hidden"
+              firstContent={
+                <img
+                  src={myimagehu}
+                  alt="Kanika"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    borderRadius: "16px",
+                  }}
+                />
+              }
+              secondContent={
+                <div
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    display: "grid",
+                    placeItems: "center",
+                    backgroundColor: "#1a1a1a",
+                    borderRadius: "16px",
+                  }}
+                >
+                  <p
+                    style={{
+                      fontWeight: "bold",
+                      fontSize: "1.8rem",
+                      color: "#fff",
+                      textAlign: "center",
+                    }}
+                  >
+                    Meow!
+                  </p>
+                </div>
+              }
+              gridSize={12}
+              pixelColor="#ffffff"
+              animationStepDuration={0.4}
+            />
+          </div>
+          <p
             style={{
-              fontFamily: "'Figtree', sans-serif",
-              animation: "fadeInUp 1s ease-out both",
+              fontFamily: "'Audiowide', cursive",
+              fontSize: "1.8rem",
+              color: "#00d9ff",
+              marginTop: "12px",
+              letterSpacing: "3px",
+              textShadow: "0 0 8px rgba(0, 255, 209, 0.6)",
             }}
           >
             Kanika Singhal
-          </h1>
-
-          {/* <div className="text-white">
-            <TextTrail text="Kanika Singhal" />
-          </div> */}
-
-          <TextTrail
-            text="Kanika Singhal"
-            fontFamily="Figtree"
-            fontWeight="900"
-            noiseFactor={1.2}
-            noiseScale={0.001}
-            rgbPersistFactor={0.95}
-            alphaPersistFactor={0.92}
-            animateColor={true}
-            startColor="#ff6b6b"
-            textColor="#ffffff"
-            backgroundColor="#1a1a2e"
-            colorCycleInterval={2000}
-            supersample={2}
-          />
-
-          {/* <ScrollVelocity
-            texts={["Full Stack", "React.js", "Node.js", "MongoDB", "Tailwind", "AI", "OS Dev", "Open Source"]}
-            velocity={velocity}
-            className="text-cyan-400 text-lg sm:text-xl font-semibold"
-          /> */}
+          </p>
+          <p className="text-md text-gray-400 font-serif mt-4 -mb-4">I'm a</p>
         </div>
 
-        {/* Desktop-only Intro */}
-        <p
-          className="text-xl text-gray-400 tracking-wide -mb-4 hidden md:block"
-          style={{ fontFamily: '"Orbitron", sans-serif' }}
-        >
-          Hi, I’m
-        </p>
+        {/* Desktop view: Intro text */}
+        <div className="hidden md:block">
+          <p
+            className="text-2xl text-gray-400 tracking-wide z-10 -mb-6"
+            style={{ fontFamily: '"Orbitron", sans-serif' }}
+          >
+            Hi, I’m
+          </p>
 
-        {/* Desktop-only TextPressure + Tagline */}
-        <div className="relative h-[250px] md:h-[300px] w-full hidden md:flex items-center justify-start">
-          <TextPressure
-            text="Kanika"
-            flex={true}
-            alpha={false}
-            stroke={false}
-            width={true}
-            weight={true}
-            italic={true}
-            textColor="#ffffff"
-            minFontSize={24}
-            className="text-[100px] sm:text-[140px] font-extrabold"
-          />
-          <div className="absolute w-full top-1/2 left-0 transform -translate-y-1/2 bg-black/90 backdrop-blur-md py-3 z-10">
-            <ShinyText
-              text="Saving the world from ugly UIs and spaghetti code!"
-              disabled={false}
-              speed={5}
-              className="text-center text-sm sm:text-base font-medium px-4"
+          <div className="relative h-[300px] w-full flex items-center justify-start">
+            <TextPressure
+              text="Kanika"
+              flex={true}
+              alpha={false}
+              stroke={false}
+              width={true}
+              weight={true}
+              italic={true}
+              textColor="#ffffff"
+              minFontSize={24}
+              className="text-[100px] sm:text-[140px] font-extrabold"
             />
+            <div className="absolute w-full top-1/2 left-0 transform -translate-y-1/2 bg-black/90 backdrop-blur-md py-3 z-10">
+              <ShinyText
+                text="Saving the world from ugly UIs and spaghetti code!"
+                disabled={false}
+                speed={5}
+                className="text-center text-sm sm:text-base font-medium px-4"
+              />
+            </div>
           </div>
         </div>
 
-        {/* Typewriter (shared) */}
+        {/* Typewriter */}
         <TypewriterEffect />
 
         {/* Buttons */}
-        <div className="flex flex-wrap items-center justify-center gap-4 mt-6">
+        <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 mt-6">
           <GlareHover
             glareColor="#ffffff"
             glareOpacity={0.3}
             glareAngle={-30}
             glareSize={300}
             transitionDuration={800}
-            playOnce={false}
           >
             <a
               href="/KanikaSinghal_Resume.pdf"
               download
-              className="group relative inline-flex items-center justify-center gap-2 px-6 py-2 font-semibold rounded-full text-white transition-all duration-300 shadow-lg "
+              className="group relative inline-flex items-center justify-center gap-2 px-6 py-2 font-semibold rounded-full text-white transition-all duration-300 shadow-lg"
             >
-              <FiDownload className="text-lg group-hover:scale-110 transition-transform" />
+              <FiDownload className="text-white text-lg group-hover:scale-110 transition-transform duration-300" />
               <span>Download Resume</span>
             </a>
           </GlareHover>
@@ -292,19 +304,18 @@ const HeroSection = () => {
             glareAngle={45}
             glareSize={250}
             transitionDuration={800}
-            playOnce={false}
           >
             <a
               href="#contact"
-              className="group relative inline-flex items-center justify-center gap-2 px-6 py-2 font-semibold rounded-full text-white transition-all duration-300 shadow-md "
+              className="group relative inline-flex items-center justify-center gap-2 px-6 py-2 font-semibold rounded-full text-white transition-all duration-300 shadow-md"
             >
-              <FiSend className="text-lg group-hover:scale-110 transition-transform" />
+              <FiSend className="text-white text-lg group-hover:scale-110 transition-transform duration-300" />
               <span>Let’s Connect</span>
             </a>
           </GlareHover>
         </div>
 
-        {/* Social Links */}
+        {/* Social Icons */}
         <div className="flex gap-6 mt-6 text-xl justify-center md:justify-start">
           <a
             href="https://github.com/kanikaa-3018"
@@ -339,7 +350,7 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Desktop ProfileCard */}
+      {/* RIGHT SECTION: Profile Card (Desktop Only) */}
       <div className="hidden md:flex relative z-10 w-full md:w-1/2 items-center justify-center">
         <ProfileCard
           name="Kanika Singhal"

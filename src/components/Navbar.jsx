@@ -44,6 +44,7 @@
 import React, { useState } from "react";
 import GooeyNav from "../components/GooeyNav/GooeyNav.jsx";
 import { FiMenu, FiX } from "react-icons/fi";
+import { motion, AnimatePresence } from "framer-motion";
 
 const items = [
   { label: "Home", href: "#" },
@@ -57,15 +58,13 @@ const items = [
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-
   const toggleMenu = () => setMenuOpen(!menuOpen);
   const closeMenu = () => setMenuOpen(false);
 
   return (
     <>
       {/* Main Navbar */}
-      <div className="fixed top-0 left-0 w-full h-[80px] bg-[#0e0e0e] z-[1000] flex items-center justify-between px-4 sm:px-6">
-        {/* Left Logo */}
+      <div className="fixed top-0 left-0 w-full h-[80px] bg-[#0e0e0e] z-[1000] flex items-center justify-between px-4 sm:px-6 shadow-lg">
         <div className="text-white text-xl font-bold tracking-widest" style={{ fontFamily: "Orbitron, sans-serif" }}>
           KS
         </div>
@@ -84,37 +83,55 @@ const Navbar = () => {
           />
         </div>
 
-        {/* Burger Icon - Mobile only */}
+        {/* Burger Icon - Mobile */}
         <div className="md:hidden z-[1100]">
-          <button onClick={toggleMenu} className="text-white text-2xl">
+          <button
+            onClick={toggleMenu}
+            className="text-white text-3xl transition-transform duration-300"
+          >
             {menuOpen ? <FiX /> : <FiMenu />}
           </button>
         </div>
       </div>
 
-      {/* Sidebar Menu - Mobile */}
-      <div
-        className={`fixed top-0 right-0 h-screen w-[70%] sm:w-[60%] bg-black/95 backdrop-blur-md z-[1090] p-6 transform transition-transform duration-300 ease-in-out ${
-          menuOpen ? "translate-x-0" : "translate-x-full"
-        } md:hidden`}
-      >
-        <div className="text-white text-2xl font-semibold mb-8">
-          Navigation
-        </div>
-        <ul className="space-y-6">
-          {items.map((item, index) => (
-            <li key={index}>
-              <a
-                href={item.href}
-                onClick={closeMenu}
-                className="text-white text-lg font-medium transition duration-300 relative inline-block after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-cyan-400 hover:after:w-full hover:text-cyan-400 after:transition-all after:duration-300"
-              >
-                {item.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
+      {/* Sidebar - Mobile */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="fixed top-0 right-0 h-screen w-[75%] sm:w-[60%] bg-black/95 backdrop-blur-md z-[1090] p-6 shadow-2xl flex flex-col items-start gap-6"
+          >
+            {/* Header with Name */}
+            <h2
+              className="text-white text-3xl font-bold mb-6 mx-auto"
+              style={{
+                fontFamily: "'Unica One', cursive",
+                letterSpacing: "2px",
+              }}
+            >
+              Kanika Singhal
+            </h2>
+
+            {/* Navigation Items */}
+            <ul className="space-y-6 w-full">
+              {items.map((item, index) => (
+                <li key={index} className="w-full">
+                  <a
+                    href={item.href}
+                    onClick={closeMenu}
+                    className="text-white text-lg font-semibold relative block w-full transition duration-300 hover:text-cyan-400 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 hover:after:w-full after:bg-cyan-400 after:transition-all after:duration-300"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };
