@@ -7,7 +7,7 @@ import Overview from "./pages/Overview";
 import Navbar from "./components/Navbar";
 import Skills from "./pages/Skills";
 import Projects from "./pages/Projects";
-import ExperienceSection from "./pages/Experience";
+import Experience from "./pages/Experience";
 import AchievementsSection from "./pages/Achievements";
 import ContactForm from "./pages/Contact";
 import Footer from "./pages/Footer";
@@ -31,7 +31,7 @@ function App() {
               <Overview />
               <Skills />
               <Projects />
-              {/* <ExperienceSection /> */}
+              <Experience />
               <AchievementsSection />
               <ContactForm />
               <Footer />

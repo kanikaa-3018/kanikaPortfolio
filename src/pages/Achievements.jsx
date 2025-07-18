@@ -116,6 +116,7 @@ import CardSwap, { Card } from "../components/CardSwap/CardSwap.jsx";
 import { FiAward } from "react-icons/fi";
 import TrueFocus from "../TextAnimations/TrueFocus/TrueFocus.jsx";
 import FlipCard from "../components/FlipCard/FlipCard.jsx";
+import { motion } from "framer-motion";
 
 const achievements = [
   {
@@ -160,6 +161,31 @@ const achievements = [
   },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      staggerChildren: 0.2,
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.4,
+      ease: "easeOut",
+    },
+  },
+};
+
 const AchievementsSection = () => {
   const [flippedStates, setFlippedStates] = useState(
     achievements.map(() => false)
@@ -172,13 +198,17 @@ const AchievementsSection = () => {
   };
 
   return (
-    <section
-      className="w-full min-h-screen bg-black text-white px-6 sm:px-10 py-10"
+    <motion.section
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      variants={containerVariants}
+      className="w-full min-h-screen bg-black text-white px-6 sm:px-10 py-4 "
       id="achievements"
     >
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-y-10 gap-x-8 items-start">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-y-10 gap-x-8 items-center">
         {/* LEFT TEXT SECTION */}
-        <div className="space-y-6 max-w-xl">
+        <motion.div variants={itemVariants} className="space-y-6 max-w-xl">
           <TrueFocus
             sentence="Achievements & Certifications"
             manualMode={false}
@@ -188,19 +218,41 @@ const AchievementsSection = () => {
             pauseBetweenAnimations={1}
           />
 
-          <p className="text-gray-400 leading-relaxed text-sm sm:text-base">
-            These aren't just titles—they represent nights of hustle, debugging
-            marathons, and moments of breakthrough. They remind me how far I’ve
-            come—and how much further I want to go.
-          </p>
-          <blockquote className="italic text-sm text-gray-500 border-l-4 pl-4 border-blue-500">
+          <motion.p
+            className="text-gray-400 leading-relaxed text-sm sm:text-base"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            These aren't just titles—they’re milestones etched with sleepless
+            nights, relentless problem-solving, and the thrill of figuring out
+            the impossible. Each one tells a story of resilience, growth, and
+            unshakable curiosity.
+          </motion.p>
+
+          <motion.p
+            className="text-gray-400 leading-relaxed text-sm sm:text-base mt-3"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            They’re not endpoints—they're checkpoints. And with every line of
+            code, I’m leveling up, chasing something bigger.
+          </motion.p>
+
+          <motion.blockquote
+            className="italic text-sm text-gray-500 border-l-4 pl-4 border-blue-500 mt-4"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+          >
             “Every achievement unlocks the next challenge.”
-          </blockquote>
-        </div>
+          </motion.blockquote>
+        </motion.div>
 
         {/* DESKTOP: Fancy CardSwap */}
         <div
-          className="hidden md:block max-w-xl mx-auto"
+          className="hidden md:block max-w-xl mx-auto -mt-16"
           style={{ height: "600px", position: "relative" }}
         >
           <CardSwap
@@ -223,9 +275,6 @@ const AchievementsSection = () => {
                       className="w-full h-60 object-contain mb-4 rounded-lg bg-white/5 p-2"
                     />
                   )}
-                  {/* <p className="text-gray-300 text-sm mb-3">
-                    {ach.description}
-                  </p> */}
                   <span className="text-xs text-blue-300 bg-blue-500/10 px-3 py-1 rounded-full self-start">
                     {ach.tag}
                   </span>
@@ -236,39 +285,50 @@ const AchievementsSection = () => {
         </div>
 
         {/* MOBILE: 3D Flip Cards */}
-        <div className="md:hidden flex flex-col gap-6 mt-8">
+        <motion.div
+          variants={itemVariants}
+          className="md:hidden flex flex-col gap-6 mt-8"
+        >
           {achievements.map((ach, i) => (
-            <FlipCard
+            <motion.div
               key={i}
-              isFlipped={flippedStates[i]}
-              onFlip={() => handleFlip(i)}
-              front={
-                <div className="flex flex-col justify-center items-center">
-                  <div className="flex items-center gap-2 mb-1">
-                    <FiAward className="text-yellow-400" />
-                    <h3 className="text-base font-semibold">{ach.title}</h3>
-                  </div>
-                  <p className="text-xs text-gray-400 mt-2">Tap to view more</p>
-                </div>
-              }
-              back={
-                <div className="flex flex-col justify-between h-full">
-                  <p className="text-sm text-gray-200">{ach.description}</p>
-                  <div>
-                    <span className="text-xs text-blue-300 bg-blue-500/10 px-2 py-0.5 rounded mt-2 inline-block">
-                      {ach.tag}
-                    </span>
-                    <p className="text-xs text-gray-500 mt-2 italic">
-                      Tap to go back
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.2, duration: 0.4 }}
+            >
+              <FlipCard
+                isFlipped={flippedStates[i]}
+                onFlip={() => handleFlip(i)}
+                front={
+                  <div className="flex flex-col justify-center items-center">
+                    <div className="flex items-center gap-2 mb-1">
+                      <FiAward className="text-yellow-400" />
+                      <h3 className="text-base font-semibold">{ach.title}</h3>
+                    </div>
+                    <p className="text-xs text-gray-400 mt-2">
+                      Tap to view more
                     </p>
                   </div>
-                </div>
-              }
-            />
+                }
+                back={
+                  <div className="flex flex-col justify-between h-full">
+                    <p className="text-sm text-gray-200">{ach.description}</p>
+                    <div>
+                      <span className="text-xs text-blue-300 bg-blue-500/10 px-2 py-0.5 rounded mt-2 inline-block">
+                        {ach.tag}
+                      </span>
+                      <p className="text-xs text-gray-500 mt-2 italic">
+                        Tap to go back
+                      </p>
+                    </div>
+                  </div>
+                }
+              />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

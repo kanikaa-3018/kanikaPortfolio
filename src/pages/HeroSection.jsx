@@ -156,6 +156,9 @@
 // export default HeroSection;
 
 import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import Tilt from "react-parallax-tilt";
+
 import Squares from "../Backgrounds/Squares/Squares.jsx";
 import TextPressure from "../TextAnimations/TextPressure/TextPressure.jsx";
 import ShinyText from "../TextAnimations/ShinyText/ShinyText.jsx";
@@ -165,8 +168,7 @@ import GlareHover from "../Animations/GlareHover/GlareHover.jsx";
 import myimagehu from "../assets/myimagehu.jpg";
 import PixelTransition from "../Animations/PixelTransition/PixelTransition.jsx";
 import { FiDownload, FiSend } from "react-icons/fi";
-import FluidGlass from "../components/FluidGlass/FluidGlass.jsx";
-
+import KANIKA_IMG from "../assets/KANIKA_IMG.png";
 const HeroSection = () => {
   const [isFlipped, setIsFlipped] = useState(false);
 
@@ -181,16 +183,20 @@ const HeroSection = () => {
     <div className="relative flex flex-col md:flex-row items-center justify-between w-full min-h-screen bg-black px-6 sm:px-8 py-20 overflow-hidden">
       {/* LEFT SECTION */}
       <div className="relative z-10 w-full md:w-1/2 flex flex-col justify-center text-white">
-        {/* Mobile view: Pixel Flip */}
-        <div className="md:hidden mb-8 flex justify-center flex-col items-center ">
-          <div className="absolute top-[-30px] left-1/2 transform -translate-x-1/2 z-0 w-[280px] h-[280px] opacity-70"></div>
-          <div className="w-64 h-64 mt-4">
+        {/* MOBILE: Pixel + Tilt + Name */}
+        <div className="md:hidden mb-8 flex justify-center flex-col items-center">
+          <motion.div
+            className="w-64 h-64 mt-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
             <PixelTransition
               flipped={isFlipped}
               className="rounded-xl overflow-hidden"
               firstContent={
                 <img
-                  src={myimagehu}
+                  src={KANIKA_IMG}
                   alt="Kanika"
                   style={{
                     width: "100%",
@@ -227,30 +233,43 @@ const HeroSection = () => {
               pixelColor="#ffffff"
               animationStepDuration={0.4}
             />
-          </div>
-          <p
+          </motion.div>
+
+          <motion.p
+            className="text-center text-2xl font-semibold mt-4"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
             style={{
-              fontFamily: "'Audiowide', cursive",
-              fontSize: "1.8rem",
+              fontFamily: "'Orbitron', 'Audiowide', sans-serif",
               color: "#00d9ff",
-              marginTop: "12px",
-              letterSpacing: "3px",
-              textShadow: "0 0 8px rgba(0, 255, 209, 0.6)",
+              textShadow: "0 0 6px rgba(0, 255, 255, 0.5)",
             }}
           >
             Kanika Singhal
-          </p>
-          <p className="text-md text-gray-400 font-serif mt-4 -mb-4">I'm a</p>
+          </motion.p>
+
+          <motion.p
+            className="text-md text-gray-400 font-serif mt-2"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+          >
+            I'm a
+          </motion.p>
         </div>
 
-        {/* Desktop view: Intro text */}
+        {/* DESKTOP: Animated Intro */}
         <div className="hidden md:block">
-          <p
+          <motion.p
             className="text-2xl text-gray-400 tracking-wide z-10 -mb-6"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.2 }}
             style={{ fontFamily: '"Orbitron", sans-serif' }}
           >
             Hi, I’m
-          </p>
+          </motion.p>
 
           <div className="relative h-[300px] w-full flex items-center justify-start">
             <TextPressure
@@ -277,10 +296,21 @@ const HeroSection = () => {
         </div>
 
         {/* Typewriter */}
-        <TypewriterEffect />
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+        >
+          <TypewriterEffect />
+        </motion.div>
 
         {/* Buttons */}
-        <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 mt-6">
+        <motion.div
+          className="flex flex-wrap items-center justify-center md:justify-start gap-4 mt-6"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6 }}
+        >
           <GlareHover
             glareColor="#ffffff"
             glareOpacity={0.3}
@@ -313,10 +343,15 @@ const HeroSection = () => {
               <span>Let’s Connect</span>
             </a>
           </GlareHover>
-        </div>
+        </motion.div>
 
         {/* Social Icons */}
-        <div className="flex gap-6 mt-6 text-xl justify-center md:justify-start">
+        <motion.div
+          className="flex gap-6 mt-6 text-xl justify-center md:justify-start"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.8 }}
+        >
           <a
             href="https://github.com/kanikaa-3018"
             target="_blank"
@@ -347,23 +382,28 @@ const HeroSection = () => {
           >
             <i className="fab fa-twitter"></i>
           </a>
-        </div>
+        </motion.div>
       </div>
 
-      {/* RIGHT SECTION: Profile Card (Desktop Only) */}
-      <div className="hidden md:flex relative z-10 w-full md:w-1/2 items-center justify-center">
+      {/* RIGHT SECTION: Desktop Only */}
+      <motion.div
+        className="hidden md:flex relative z-10 w-full md:w-1/2 items-center justify-center"
+        initial={{ opacity: 0, x: 50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.6 }}
+      >
         <ProfileCard
           name="Kanika Singhal"
           title="Software Developer"
           handle="kanikaa-3018"
           status="Online"
           contactText="Contact Me"
-          avatarUrl={myimagehu}
+          avatarUrl={KANIKA_IMG}
           showUserInfo={true}
           enableTilt={true}
           onContactClick={() => console.log("Contact clicked")}
         />
-      </div>
+      </motion.div>
     </div>
   );
 };

@@ -1,39 +1,27 @@
 import React from "react";
 import TiltedCard from "../components/TiltedCard/TiltedCard";
-import { FaCode, FaPaintBrush } from "react-icons/fa";
-import {
-  FiCpu,
-  FiFeather,
-  FiActivity,
-  FiCoffee,
-  FiZap,
-  FiTrendingUp,
-} from "react-icons/fi";
-import GlassIcons from "../components/GlassIcons/GlassIcons";
+import { FaCode } from "react-icons/fa";
+import { FiCpu, FiActivity, FiZap, FiTrendingUp } from "react-icons/fi";
+import { motion } from "framer-motion";
 
-const Card = ({ title, subtitle, desc, color = "white" }) => (
-  <div className="relative group p-5 h-full rounded-2xl bg-[#0c0c1f] overflow-hidden transition-all duration-300 shadow-md hover:shadow-cyan-500/30">
-    {/* Border Animation on Hover */}
+const Card = ({ title, subtitle, desc, color = "white", delay = 0 }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6, delay }}
+    viewport={{ once: true }}
+    className="relative group p-5 h-full rounded-2xl bg-[#0c0c1f] overflow-hidden transition-all duration-300 shadow-md hover:shadow-cyan-500/30"
+  >
     <span className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-cyan-400 z-10 pointer-events-none animate-borderDraw" />
-
-    {/* Card Content */}
     <div className="relative z-20 text-center flex flex-col justify-center h-full">
       <p className={`text-sm font-semibold text-${color} mb-1`}>{subtitle}</p>
       <h3 className="text-xl font-bold text-white">{title}</h3>
       <p className="mt-2 text-sm text-gray-300">{desc}</p>
     </div>
-  </div>
+  </motion.div>
 );
 
 const Overview = () => {
-  const cpItems = [
-    { icon: <FiTrendingUp />, color: "blue", label: "Specialist – Codeforces" },
-    { icon: <FiZap />, color: "yellow", label: "Knight – LeetCode" },
-    { icon: <FiCpu />, color: "red", label: "3★ – CodeChef" },
-    { icon: <FaCode />, color: "indigo", label: "500+ Problems Solved" },
-    { icon: <FiActivity />, color: "green", label: "Active Contestant" },
-  ];
-
   const cpStats = [
     {
       platform: "Codeforces",
@@ -60,16 +48,28 @@ const Overview = () => {
 
   return (
     <section className="w-full bg-black text-white px-6 sm:px-12 py-16">
-      <h2 className="text-4xl sm:text-5xl font-extrabold text-center mb-16">
+      <motion.h2
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.5 }}
+        viewport={{ once: true }}
+        className="text-4xl sm:text-5xl font-extrabold text-center mb-16"
+      >
         About Me
-      </h2>
+      </motion.h2>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Column 1 */}
         <div className="h-[450px] flex flex-col gap-4">
-          <div className="flex-1">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.6 }}
+            viewport={{ once: true }}
+            className="flex-1"
+          >
             <TiltedCard
-              imageSrc="https://images.unsplash.com/vector-1743446708614-75e82327d3c6?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzR8fGFic3RyYWN0fGVufDB8MHwwfHx8MA%3D%3D"
+              imageSrc="https://images.unsplash.com/vector-1743446708614-75e82327d3c6?w=600"
               altText="Full Stack Developer"
               captionText="Kanika | Full Stack Dev"
               containerHeight="100%"
@@ -91,26 +91,34 @@ const Overview = () => {
                 </div>
               }
             />
-          </div>
-          <div className="grid grid-cols-2 gap-4  ">
+          </motion.div>
+          <div className="grid grid-cols-2 gap-4">
             <Card
               title="Creative Chaos"
               subtitle="All-Rounder"
               desc="From designing posters to anchoring events - I wear many hats and still stay grounded."
               color="yellow-400"
+              delay={0.8}
             />
             <Card
               title="Curious Learner"
               subtitle="Exploring More"
               desc="Currently diving into AI, devtools, agent AI's and orchestration - curiosity is the engine."
               color="green-400"
+              delay={1}
             />
           </div>
         </div>
 
         {/* Column 2 */}
-        <div className="h-auto flex flex-col justify-center bg-white/5 backdrop-blur-md rounded-2xl p-6 shadow-inner border border-white/10 transition-all duration-500 hover:shadow-2xl">
-          <h3 className="text-2xl sm:text-3xl font-extrabold text-white text-center mb-4 tracking-wide animate-fade-in">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 1.2 }}
+          viewport={{ once: true }}
+          className="h-auto flex flex-col justify-center bg-white/5 backdrop-blur-md rounded-2xl p-6 shadow-inner border border-white/10 transition-all duration-500 hover:shadow-2xl"
+        >
+          <h3 className="text-2xl sm:text-3xl font-extrabold text-white text-center mb-4 tracking-wide">
             Competitive Programmer
           </h3>
           <p className="text-sm sm:text-base text-gray-300 text-center mb-2 px-4">
@@ -118,15 +126,18 @@ const Overview = () => {
             Here's a snapshot of my CP journey:
           </p>
 
-          {/* CP Platform Cards */}
-          <div className="flex-1 overflow-y-auto animate-slide-in-bottom">
+          <div className="flex-1 overflow-y-auto">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
               {cpStats.map((stat, index) => (
-                <a
+                <motion.a
                   key={index}
                   href={stat.link}
                   target="_blank"
                   rel="noopener noreferrer"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 1.4 + index * 0.2 }}
+                  viewport={{ once: true }}
                   className={`bg-gradient-to-br ${stat.color} rounded-xl p-4 flex flex-col items-center text-white shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-300`}
                 >
                   <img
@@ -136,37 +147,33 @@ const Overview = () => {
                   />
                   <p className="text-sm opacity-80">{stat.platform}</p>
                   <h3 className="text-lg font-bold">{stat.rank}</h3>
-                </a>
+                </motion.a>
               ))}
             </div>
 
-            {/* Timeline-style Achievements */}
+            {/* Timeline */}
             <div className="mt-10 space-y-4 px-2">
-              
               <div className="relative border-l-2 border-cyan-500 pl-6 space-y-4 text-sm text-gray-300">
-                <div className="relative">
-                  
-                  <p>
-                    ATF Fellow – <strong>AlgoUniversity, 2024</strong>
-                  </p>
-                </div>
-                <div className="relative">
-                  
-                  <p>
-                    Finalist – <strong>CodeClash Coding Contest</strong>
-                  </p>
-                </div>
-                
-                <div className="relative">
-                  
-                  <p>
-                    <strong>CodeChef Starters</strong> 3★ Contest – Top 2%
-                  </p>
-                </div>
+                {[
+                  "ATF Fellow – AlgoUniversity, 2024",
+                  "Finalist – CodeClash Coding Contest",
+                  "Top 2% – CodeChef Starters 3★",
+                ].map((entry, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: 2 + i * 0.2 }}
+                    viewport={{ once: true }}
+                    className="relative"
+                  >
+                    <p>{entry}</p>
+                  </motion.div>
+                ))}
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Column 3 */}
         <div className="h-[450px] flex flex-col gap-4">
@@ -176,11 +183,16 @@ const Overview = () => {
               subtitle="ABV-IIITM Gwalior · 2023–2027"
               desc="Currently pursuing my Bachelor's in IT from ABV Indian Institute of Information Technology & Management, Gwalior. Passionate about software development, research, and solving real-world problems with tech."
               color="blue-500"
+              delay={1.3}
             />
           </div>
-
-          {/* TiltedCard with Weeknd Image & Hobbies */}
-          <div className="flex-1">
+          <motion.div
+            className="flex-1"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 1 }}
+            viewport={{ once: true }}
+          >
             <TiltedCard
               imageSrc="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSdzwTSFf242I9ds2WOBg89QZslCM3zuVBOg&s"
               altText="The Weeknd"
@@ -204,7 +216,7 @@ const Overview = () => {
                 </div>
               }
             />
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

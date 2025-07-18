@@ -46,6 +46,7 @@ import GooeyNav from "../components/GooeyNav/GooeyNav.jsx";
 import { FiMenu, FiX } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom"; 
+import ks from "../../public/ks.png"
 
 const items = [
   { label: "Home", href: "/" },
@@ -54,7 +55,7 @@ const items = [
   { label: "Projects", href: "/myprojects" },         
   { label: "Experience", href: "/myexperience" },     
   { label: "Achievements", href: "/myachievements" },
-  { label: "Contact", href: "/contact" },
+  // { label: "Contact", href: "/contact" },
 ];
 
 const Navbar = () => {
@@ -66,7 +67,7 @@ const Navbar = () => {
     <>
       <div className="fixed top-0 left-0 w-full h-[80px] bg-[#0e0e0e] z-[1000] flex items-center justify-between px-4 sm:px-6 shadow-lg">
         <div className="text-white text-xl font-bold tracking-widest" style={{ fontFamily: "Orbitron, sans-serif" }}>
-          KS
+          <img src={ks} alt="logo" width={64} height={64} />
         </div>
 
         <div className="hidden relative md:flex justify-center w-full">

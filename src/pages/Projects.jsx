@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 import { FiGrid, FiList, FiGithub, FiExternalLink } from "react-icons/fi";
 import ChromaGrid from "../components/ChromaGrid/ChromaGrid.jsx";
 import StarBorder from "../Animations/StarBorder/StarBorder.jsx";
@@ -65,6 +66,15 @@ const projects = [
   },
 ];
 
+const fadeIn = {
+  hidden: { opacity: 0, y: 20 },
+  visible: (i = 1) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.1, duration: 0.6 },
+  }),
+};
+
 const Projects = () => {
   const navigate = useNavigate();
   const [view, setView] = useState("grid");
@@ -85,19 +95,29 @@ const Projects = () => {
   };
 
   return (
-    <section
-      className="w-full min-h-screen bg-black text-white px-6 sm:px-16 py-24"
+    <motion.section
       id="projects"
+      className="w-full min-h-screen bg-black text-white px-6 sm:px-16 py-24"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      variants={fadeIn}
     >
+      {/* Heading */}
       <div className="relative flex items-center justify-between mb-12">
-        {/* Centered Title */}
-        <h2 className="absolute left-1/2 transform -translate-x-1/2 text-4xl sm:text-5xl font-extrabold text-center">
+        <motion.h2
+          className="absolute left-1/2 transform -translate-x-1/2 text-4xl sm:text-5xl font-extrabold text-center text-white bg-clip-text text-transparent drop-shadow-md"
+          initial={{ opacity: 0, y: -40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
           Projects
-        </h2>
+        </motion.h2>
 
-        {/* Toggle Buttons on the Right */}
         <div className="ml-auto flex gap-4 text-xl">
-          <button
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
             onClick={() => setView("grid")}
             className={`p-2 rounded-full transition ${
               view === "grid" ? "bg-white text-black" : "bg-white/10 text-white"
@@ -105,8 +125,10 @@ const Projects = () => {
             title="Grid View"
           >
             <FiGrid />
-          </button>
-          <button
+          </motion.button>
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
             onClick={() => setView("list")}
             className={`p-2 rounded-full transition ${
               view === "list" ? "bg-white text-black" : "bg-white/10 text-white"
@@ -114,13 +136,18 @@ const Projects = () => {
             title="List View"
           >
             <FiList />
-          </button>
+          </motion.button>
         </div>
       </div>
 
-      {/* Grid view using ChromaGrid */}
+      {/* Grid View */}
       {view === "grid" ? (
-        <div style={{ height: "auto", position: "relative" }}>
+        <motion.div
+          style={{ height: "auto", position: "relative" }}
+          initial="hidden"
+          whileInView="visible"
+          variants={fadeIn}
+        >
           <ChromaGrid
             items={projects.map((proj) => ({
               image: proj.images[0],
@@ -172,27 +199,38 @@ const Projects = () => {
               url: proj.live,
             }))}
           />
-          <button
+
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             onClick={() => navigate("/myprojects")}
             className="group relative inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-[#1f1f1f] via-[#2a2a2a] to-[#1a1a1a] text-white font-semibold shadow-md hover:shadow-xl transition duration-300 border border-white/10 hover:border-white/30 mt-8"
           >
             <span className="text-sm sm:text-base">Show Projects</span>
             <FiArrowRight className="group-hover:translate-x-1 transition-transform duration-300" />
             <span className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-10 bg-white transition duration-300"></span>
-          </button>
-        </div>
+          </motion.button>
+        </motion.div>
       ) : (
-        // List view
-        <div className="space-y-12">
+        // List View
+        <motion.div
+          className="space-y-12"
+          initial="hidden"
+          whileInView="visible"
+          variants={fadeIn}
+        >
           {projects.map((proj, i) => {
             const index = imageIndexes[i] || 0;
 
             return (
-              <div
+              <motion.div
                 key={i}
                 className="flex flex-col lg:flex-row gap-6 bg-[#111827] text-white p-6 rounded-3xl shadow-xl"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.1 }}
+                viewport={{ once: true }}
               >
-                {/* Image carousel */}
                 <div className="lg:w-3/4 flex flex-col md:flex-row gap-6 text-left">
                   <div className="relative w-full md:w-2/5">
                     <img
@@ -216,7 +254,6 @@ const Projects = () => {
                     </div>
                   </div>
 
-                  {/* Project text */}
                   <div className="flex-1 space-y-3">
                     <h3 className="text-2xl font-bold border-b border-white/10 pb-1">
                       {proj.name}
@@ -251,7 +288,7 @@ const Projects = () => {
                         rel="noreferrer"
                         color="cyan"
                         speed="5s"
-                        className="text-xs custom-class"
+                        className="text-xs"
                       >
                         View Project
                       </StarBorder>
@@ -270,21 +307,23 @@ const Projects = () => {
                     className="rounded-lg object-cover h-40 w-full"
                   />
                 </div>
-              </div>
+              </motion.div>
             );
           })}
 
-          <button
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             onClick={() => navigate("/myprojects")}
             className="group relative inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-[#1f1f1f] via-[#2a2a2a] to-[#1a1a1a] text-white font-semibold shadow-md hover:shadow-xl transition duration-300 border border-white/10 hover:border-white/30 mt-8"
           >
             <span className="text-sm sm:text-base">Show Projects</span>
             <FiArrowRight className="group-hover:translate-x-1 transition-transform duration-300" />
             <span className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-10 bg-white transition duration-300"></span>
-          </button>
-        </div>
+          </motion.button>
+        </motion.div>
       )}
-    </section>
+    </motion.section>
   );
 };
 
