@@ -5,17 +5,18 @@ import React from "react";
 import w1 from "../assets/w1.png"
 import codearena from "../assets/codearena.png"
 import Thumbnail from "../assets/Thumbnail.png"
+import image1 from "../assets/image1.png"
 import image from "../assets/image.png"
 import hope from "../assets/hope.png"
 
 const projects = [
   {
-    title: "Contest Tracker + Online Judge",
+    title: "CodeArena- The Real OJ",
     description:
       "A full-stack platform that combines coding contest tracking with an online judge. Integrates Codeforces, LeetCode, and CodeChef APIs, featuring AI-powered post-contest analytics, real-time code execution, test case generation, and performance insights.",
     stack: ["MERN", "Docker", "n8n", "AI", "JWT", "TailwindCSS", "Codeforces API"],
     github: "https://github.com/kanikaa-3018/contest_onlinejudge",
-    live: "", // Add if deployed
+    live: "https://contest-onlinejudge.vercel.app", 
     image: codearena,
   },
   {
@@ -24,7 +25,7 @@ const projects = [
       "A decentralized Web3 portfolio and community app for developers. Features interactive 3D UI, NFT showcases, Web3 authentication, and personal blogging—all in one immersive network.",
     stack: ["React", "Three.js", "Web3.js", "TailwindCSS", "IPFS", "Metamask"],
     github: "https://github.com/kanikaa-3018/w3nity",
-    live: "", // Add if deployed
+    live: "https://w3nity.vercel.app", 
     image: w1,
   },
   {
@@ -33,7 +34,7 @@ const projects = [
       "A custom-built OS developed in C++ with process scheduling (MLFQ), memory management, Gantt chart display, and system call handling. Designed to demonstrate low-level system architecture.",
     stack: ["C++", "MLFQ", "Memory Management", "Gantt Chart", "Syscalls", "Terminal UI"],
     github: "https://github.com/kanikaa-3018/hogwarts-OS",
-    live: "", // Not applicable
+    live: "", 
     image: Thumbnail,
   },
   {
@@ -42,8 +43,8 @@ const projects = [
       "An elegant and responsive cafe website with a live order panel, user auth, dynamic menu management, and admin dashboard. Designed with a strong aesthetic focus for a premium experience.",
     stack: ["React", "TailwindCSS", "Firebase", "Framer Motion", "Vite"],
     github: "https://github.com/kanikaa-3018/kayzzkoffee",
-    live: "", // Add if deployed
-    image: image,
+    live: "",
+    image: image1,
   },
   {
     title: "Hope Aesthetics",
@@ -51,7 +52,7 @@ const projects = [
       "A luxury skincare and aesthetics clinic website with smooth scroll, embedded booking options, animated UI, and mobile-first design. Built to reflect brand elegance and user experience.",
     stack: ["HTML", "CSS", "JavaScript", "AOS", "GSAP", "Responsive Design"],
     github: "https://github.com/kanikaa-3018/hope-aestehtics",
-    live: "", // Add if deployed
+    live: "https://hope-aesthetics.vercel.app",
     image: hope,
   },
   {
@@ -60,8 +61,8 @@ const projects = [
       "A microblogging web app inspired by Twitter, featuring user auth, real-time tweets, comments, likes, and notifications. Built using WebSockets for live feed updates and MERN for backend.",
     stack: ["MERN", "WebSockets", "Redux", "JWT", "TailwindCSS", "MongoDB"],
     github: "https://github.com/kanikaa-3018/mcp-twitter",
-    live: "", // Add if deployed
-    image: "/images/mcp-twitter.png",
+    live: "",
+    image: image,
   },
 ];
 

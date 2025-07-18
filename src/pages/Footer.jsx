@@ -38,7 +38,7 @@ const Footer = () => {
             <FiGithub />
           </a>
           <a
-            href="https://linkedin.com/in/kanikaa-3018"
+            href="https://www.linkedin.com/in/kanika-singhal-93388428b"
             target="_blank"
             rel="noreferrer"
             className="hover:text-cyan-400 transition hover:scale-110"
@@ -47,14 +47,14 @@ const Footer = () => {
             <FiLinkedin />
           </a>
           <a
-            href="mailto:kanikaa@example.com"
+            href="mailto:kanikasinghal0308@gmail.com"
             className="hover:text-cyan-400 transition hover:scale-110"
             title="Email"
           >
             <FiMail />
           </a>
           <a
-            href="https://twitter.com/kanikaa3018"
+            href="https://twitter.com/KanikaSing57460"
             target="_blank"
             rel="noreferrer"
             className="hover:text-cyan-400 transition hover:scale-110"

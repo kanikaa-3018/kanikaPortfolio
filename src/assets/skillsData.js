@@ -16,6 +16,19 @@ import typescript from "../assets/typescript.png";
 import redux from "../assets/redux.png"
 import express from "../assets/express.png"
 import gitnew from "../assets/gitnew.png"
+import sql from "../assets/sql.png"
+import mm from "../assets/mm.png"
+import vs from "../assets/vs.png"
+import docker from "../assets/docker.png"
+import postman from "../assets/postman.png"
+import linux from "../assets/linux.png"
+import fb from "../assets/fb.png"
+import tt from "../assets/tt.png"
+import Vercel from "../assets/Vercel.png"
+import githu from "../assets/githu.png"
+import PyTorch from "../assets/PyTorch.png"
+import NumPy from "../assets/NumPy.png"
+import Jupyter from "../assets/Jupyter.png"
 
 const skillsData = [
   // Frontend
@@ -50,7 +63,7 @@ const skillsData = [
     description: "State management for large apps",
   },
   {
-    image: css,
+    image: tt,
     link: "#",
     title: "Tailwind CSS",
     description: "Utility-first CSS framework",
@@ -84,7 +97,7 @@ const skillsData = [
     description: "NoSQL document DB",
   },
   {
-    image: atom,
+    image: sql,
     link: "#",
     title: "MySQL",
     description: "Relational database",
@@ -98,7 +111,7 @@ const skillsData = [
     description: "Version control system",
   },
   {
-    image: gitnew,
+    image: githu,
     link: "#",
     title: "GitHub",
     description: "Hosting and collaboration",
@@ -138,7 +151,7 @@ const skillsData = [
     description: "Smart contracts on Ethereum",
   },
   {
-    image: gitlab,
+    image: mm,
     link: "#",
     title: "MetaMask",
     description: "Web3 wallet integration",
@@ -149,37 +162,37 @@ const skillsData = [
 
   // IDEs / Platforms
   {
-    image: atom,
+    image: vs,
     link: "#",
     title: "VS Code",
     description: "Lightweight code editor",
   },
 
   // AI / Data Science (Icons commented out earlier — add them locally if needed)
-  // { image: tensorflow, link: "#", title: "TensorFlow", description: "Deep learning" },
-  // { image: pytorch, link: "#", title: "PyTorch", description: "ML framework" },
-  // { image: numpy, link: "#", title: "NumPy", description: "Numerical computing" },
+  { image: Jupyter, link: "#", title: "Jupyter", description: "Deep learning" },
+  { image: PyTorch, link: "#", title: "PyTorch", description: "ML framework" },
+  { image: NumPy, link: "#", title: "NumPy", description: "Numerical computing" },
   // { image: pandas, link: "#", title: "Pandas", description: "Data analysis" },
 
   // Deployment / Hosting
+  // {
+  //   image: Vercel,
+  //   link: "#",
+  //   title: "Vercel",
+  //   description: "Frontend deployment",
+  // },
   {
-    image: atom,
-    link: "#",
-    title: "Vercel",
-    description: "Frontend deployment",
-  },
-  {
-    image: atom,
+    image: fb,
     link: "#",
     title: "Firebase",
     description: "Realtime DB & auth",
   },
 
   // Extra
-  { image: atom, link: "#", title: "Postman", description: "API testing tool" },
-  { image: atom, link: "#", title: "Docker", description: "Containerization" },
+  { image: postman, link: "#", title: "Postman", description: "API testing tool" },
+  { image: docker, link: "#", title: "Docker", description: "Containerization" },
   {
-    image: atom,
+    image: linux,
     link: "#",
     title: "Linux",
     description: "System and CLI usage",

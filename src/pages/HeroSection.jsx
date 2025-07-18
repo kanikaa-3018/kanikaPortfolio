@@ -183,21 +183,7 @@ const HeroSection = () => {
       <div className="relative z-10 w-full md:w-1/2 flex flex-col justify-center text-white">
         {/* Mobile view: Pixel Flip */}
         <div className="md:hidden mb-8 flex justify-center flex-col items-center ">
-          <div className="absolute top-[-30px] left-1/2 transform -translate-x-1/2 z-0 w-[280px] h-[280px] opacity-70">
-            {/* <div style={{ height: "600px", position: "relative" }}>
-              <FluidGlass
-                mode="lens" // or "bar", "cube"
-                lensProps={{
-                  scale: 0.25,
-                  ior: 1.15,
-                  thickness: 5,
-                  chromaticAberration: 0.1,
-                  anisotropy: 0.01,
-                }}
-                // add specific props if using cube mode
-              />
-            </div> */}
-          </div>
+          <div className="absolute top-[-30px] left-1/2 transform -translate-x-1/2 z-0 w-[280px] h-[280px] opacity-70"></div>
           <div className="w-64 h-64 mt-4">
             <PixelTransition
               flipped={isFlipped}
@@ -303,8 +289,8 @@ const HeroSection = () => {
             transitionDuration={800}
           >
             <a
-              href="/KanikaSinghal_Resume.pdf"
-              download
+              href="/Kanika_Singhal_Resume.pdf"
+              download="Kanika_Singhal_Resume.pdf"
               className="group relative inline-flex items-center justify-center gap-2 px-6 py-2 font-semibold rounded-full text-white transition-all duration-300 shadow-lg"
             >
               <FiDownload className="text-white text-lg group-hover:scale-110 transition-transform duration-300" />
@@ -320,7 +306,7 @@ const HeroSection = () => {
             transitionDuration={800}
           >
             <a
-              href="#contact"
+              href="mailto:kanikasinghal0308@gmail.com?subject=Let's%20Connect&body=Hi%20Kanika,"
               className="group relative inline-flex items-center justify-center gap-2 px-6 py-2 font-semibold rounded-full text-white transition-all duration-300 shadow-md"
             >
               <FiSend className="text-white text-lg group-hover:scale-110 transition-transform duration-300" />

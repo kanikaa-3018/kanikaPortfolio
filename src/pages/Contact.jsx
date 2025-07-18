@@ -72,13 +72,13 @@ const Contact = () => {
               <a href="https://github.com/kanikaa-3018" target="_blank" rel="noreferrer">
                 <FiGithub className="hover:text-cyan-400 transition" />
               </a>
-              <a href="https://linkedin.com/in/kanika-singhal" target="_blank" rel="noreferrer">
+              <a href="https://www.linkedin.com/in/kanika-singhal-93388428b" target="_blank" rel="noreferrer">
                 <FiLinkedin className="hover:text-blue-400 transition" />
               </a>
-              <a href="https://twitter.com/yourhandle" target="_blank" rel="noreferrer">
+              <a href="https://twitter.com/KanikaSing57460" target="_blank" rel="noreferrer">
                 <FiTwitter className="hover:text-sky-400 transition" />
               </a>
-              <a href="mailto:kanika@example.com">
+              <a href="mailto:kanikasinghal0308@gmail.com">
                 <FiMail className="hover:text-green-400 transition" />
               </a>
             </div>
