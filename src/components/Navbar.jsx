@@ -52,7 +52,7 @@ const items = [
   { label: "About", href: "/about" },
   { label: "Skills", href: "/myskills" },
   { label: "Projects", href: "/myprojects" },         
-  { label: "Experience", href: "/myachievements" },     
+  { label: "Experience", href: "/myexperience" },     
   { label: "Achievements", href: "/myachievements" },
   { label: "Contact", href: "/contact" },
 ];
@@ -69,7 +69,7 @@ const Navbar = () => {
           KS
         </div>
 
-        <div className="hidden md:flex justify-center w-full">
+        <div className="hidden relative md:flex justify-center w-full">
           <GooeyNav
             items={items}
             particleCount={15}

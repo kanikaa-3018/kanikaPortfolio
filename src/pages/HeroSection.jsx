@@ -165,6 +165,7 @@ import GlareHover from "../Animations/GlareHover/GlareHover.jsx";
 import myimagehu from "../assets/myimagehu.jpg";
 import PixelTransition from "../Animations/PixelTransition/PixelTransition.jsx";
 import { FiDownload, FiSend } from "react-icons/fi";
+import FluidGlass from "../components/FluidGlass/FluidGlass.jsx";
 
 const HeroSection = () => {
   const [isFlipped, setIsFlipped] = useState(false);
@@ -178,12 +179,25 @@ const HeroSection = () => {
 
   return (
     <div className="relative flex flex-col md:flex-row items-center justify-between w-full min-h-screen bg-black px-6 sm:px-8 py-20 overflow-hidden">
-      
-      
       {/* LEFT SECTION */}
       <div className="relative z-10 w-full md:w-1/2 flex flex-col justify-center text-white">
         {/* Mobile view: Pixel Flip */}
         <div className="md:hidden mb-8 flex justify-center flex-col items-center ">
+          <div className="absolute top-[-30px] left-1/2 transform -translate-x-1/2 z-0 w-[280px] h-[280px] opacity-70">
+            {/* <div style={{ height: "600px", position: "relative" }}>
+              <FluidGlass
+                mode="lens" // or "bar", "cube"
+                lensProps={{
+                  scale: 0.25,
+                  ior: 1.15,
+                  thickness: 5,
+                  chromaticAberration: 0.1,
+                  anisotropy: 0.01,
+                }}
+                // add specific props if using cube mode
+              />
+            </div> */}
+          </div>
           <div className="w-64 h-64 mt-4">
             <PixelTransition
               flipped={isFlipped}

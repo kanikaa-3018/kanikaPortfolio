@@ -5,6 +5,8 @@ import React from "react";
 import w1 from "../assets/w1.png"
 import codearena from "../assets/codearena.png"
 import Thumbnail from "../assets/Thumbnail.png"
+import image from "../assets/image.png"
+import hope from "../assets/hope.png"
 
 const projects = [
   {
@@ -41,7 +43,7 @@ const projects = [
     stack: ["React", "TailwindCSS", "Firebase", "Framer Motion", "Vite"],
     github: "https://github.com/kanikaa-3018/kayzzkoffee",
     live: "", // Add if deployed
-    image: "/images/kayzkoffee.png",
+    image: image,
   },
   {
     title: "Hope Aesthetics",
@@ -50,7 +52,7 @@ const projects = [
     stack: ["HTML", "CSS", "JavaScript", "AOS", "GSAP", "Responsive Design"],
     github: "https://github.com/kanikaa-3018/hope-aestehtics",
     live: "", // Add if deployed
-    image: "/images/hope-aesthetics.png",
+    image: hope,
   },
   {
     title: "MCP Twitter",

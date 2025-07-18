@@ -14,6 +14,7 @@ import Footer from "./pages/Footer";
 import DetailedProjects from "./pages/DetailedProjects";
 import DetailedExperience from "./pages/DetailedExperience";
 import DetailedSkills from "./pages/DetailedSkills";
+import MyExperience from "./pages/MyExperience.jsx"
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
         <Route path="/myprojects" element={<DetailedProjects />} />
         <Route path="/myachievements" element={<DetailedExperience />} />
         <Route path="/myskills" element={<DetailedSkills />} />
+        <Route path="/myexperience" element={<MyExperience />} />
       </Routes>
     </Router>
   );

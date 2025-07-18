@@ -11,28 +11,63 @@ import {
 import { LuLaptop, LuSend } from "react-icons/lu"; // Fallback icons
 
 const skills = {
-  "Languages & Frameworks": [
+  "Frontend & UI": [
     { name: "JavaScript", icon: <SiJavascript />, level: 95 },
-    { name: "TypeScript", icon: <SiTypescript />, level: 85 },
-    { name: "React", icon: <FaReact />, level: 90 },
-    { name: "Node.js", icon: <FaNodeJs />, level: 88 },
-    { name: "Python", icon: <FaPython />, level: 80 },
-    { name: "Java", icon: <FaJava />, level: 75 },
+    { name: "TypeScript", icon: <SiTypescript />, level: 90 },
+    { name: "React.js", icon: <FaReact />, level: 92 },
+    { name: "Next.js", icon: <FaReact />, level: 85 },
+    { name: "Redux", icon: <SiJavascript />, level: 85 },
+    { name: "Tailwind CSS", icon: <SiTailwindcss />, level: 95 },
+    { name: "Sass", icon: <SiJavascript />, level: 80 },
+    { name: "Bootstrap", icon: <SiJavascript />, level: 75 },
+    { name: "Framer Motion", icon: <SiJavascript />, level: 85 },
   ],
-  "Databases & DevOps": [
+
+  "Backend & APIs": [
+    { name: "Node.js", icon: <FaNodeJs />, level: 90 },
+    { name: "Express.js", icon: <FaNodeJs />, level: 88 },
+    { name: "RESTful APIs", icon: <LuSend />, level: 90 },
+    { name: "GraphQL", icon: <SiJavascript />, level: 75 },
+    { name: "JWT Auth", icon: <SiJavascript />, level: 85 },
+    { name: "WebSockets", icon: <SiJavascript />, level: 70 },
+  ],
+
+  "Databases": [
     { name: "MongoDB", icon: <SiMongodb />, level: 90 },
-    { name: "PostgreSQL", icon: <SiPostgresql />, level: 70 },
-    { name: "Firebase", icon: <SiFirebase />, level: 75 },
-    { name: "Docker", icon: <FaDocker />, level: 85 },
-    { name: "AWS", icon: <FaAws />, level: 70 },
+    { name: "PostgreSQL", icon: <SiPostgresql />, level: 80 },
+    { name: "MySQL", icon: <FaDatabase />, level: 75 },
+    { name: "Firebase", icon: <SiFirebase />, level: 80 },
+    { name: "Redis", icon: <SiJavascript />, level: 70 },
   ],
+
+  "AI, Data & Python": [
+    { name: "Python", icon: <FaPython />, level: 85 },
+    { name: "TensorFlow", icon: <SiJavascript />, level: 75 },
+    { name: "PyTorch", icon: <SiJavascript />, level: 70 },
+    { name: "Pandas", icon: <SiJavascript />, level: 80 },
+    { name: "NumPy", icon: <SiJavascript />, level: 85 },
+    { name: "OpenCV", icon: <SiJavascript />, level: 65 },
+  ],
+
+  "DevOps & Cloud": [
+    { name: "Docker", icon: <FaDocker />, level: 85 },
+    { name: "Git", icon: <FaGitAlt />, level: 95 },
+    { name: "GitHub Actions", icon: <SiJavascript />, level: 80 },
+    { name: "AWS", icon: <FaAws />, level: 75 },
+    { name: "Azure", icon: <SiJavascript />, level: 70 },
+    { name: "Linux", icon: <SiJavascript />, level: 85 },
+    { name: "Nginx", icon: <SiJavascript />, level: 70 },
+  ],
+
   "Tools & Platforms": [
-    { name: "Git", icon: <FaGitAlt />, level: 90 },
-    { name: "TailwindCSS", icon: <SiTailwindcss />, level: 95 },
     { name: "VS Code", icon: <LuLaptop />, level: 98 },
     { name: "Postman", icon: <LuSend />, level: 90 },
+    { name: "Figma", icon: <SiJavascript />, level: 75 },
+    { name: "Jira", icon: <SiJavascript />, level: 70 },
+    { name: "Notion", icon: <SiJavascript />, level: 80 },
   ]
 };
+
 
 const SkillCard = ({ title, skillList }) => (
   <motion.div
@@ -76,7 +111,7 @@ const DetailedSkills = () => {
         initial={{ opacity: 0, y: -30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="text-3xl sm:text-4xl font-bold tracking-wider mt-16 text-center text-white relative inline-block font-display"
+        className="text-6xl sm:text-4xl font-bold tracking-wider mt-16 text-center text-white relative inline-block font-display"
         style={{ fontFamily: "Orbitron, sans-serif" }}
       >
         Tech Skills

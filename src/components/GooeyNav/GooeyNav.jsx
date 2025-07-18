@@ -163,10 +163,13 @@ const GooeyNav = ({
           .effect.filter::before {
             content: "";
             position: absolute;
-            inset: -75px;
+            // inset: -75px;
             z-index: -2;
-            background: black;
+            // background: black;
           }
+  //         .effect.filter::before {
+  // content: none;
+}
           .effect.filter::after {
             content: "";
             position: absolute;
@@ -253,25 +256,45 @@ const GooeyNav = ({
               opacity: 0;
             }
           }
-          li.active {
+           {
             color: black;
             text-shadow: none;
           }
-          li.active::after {
-            opacity: 1;
-            transform: scale(1);
-          }
-          li::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            border-radius: 8px;
-            background: white;
-            opacity: 0;
-            transform: scale(0);
-            transition: all 0.3s ease;
-            z-index: -1;
-          }
+            li {
+  position: relative;
+  z-index: 0;
+}
+li::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: white;
+  transform: scale(0);
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: -1;
+}
+li.active::after {
+  transform: scale(1);
+  opacity: 1;
+}
+
+          //li.active::after {
+          //   opacity: 1;
+          //   transform: scale(1);
+          // }
+          // li::after {
+          //   content: "";
+          //   position: absolute;
+          //   inset: 0;
+          //   border-radius: 8px;
+          //   background: white;
+          //   opacity: 0;
+          //   transform: scale(0);
+          //   transition: all 0.3s ease;
+          //   z-index: -1;
+          // }
         `}
       </style>
       <div className="relative" ref={containerRef}>
@@ -287,7 +310,7 @@ const GooeyNav = ({
               textShadow: "0 1px 1px hsl(205deg 30% 10% / 0.2)",
             }}
           >
-            {items.map((item, index) => (
+            {/* {items.map((item, index) => (
               <li
                 key={index}
                 className={`rounded-full relative cursor-pointer transition-[background-color_color_box-shadow] duration-300 ease shadow-[0_0_0.5px_1.5px_transparent] text-white ${
@@ -303,6 +326,20 @@ const GooeyNav = ({
                   {item.label}
                 </a>
               </li>
+            ))} */}
+            {items.map((item, index) => (
+              <li
+                key={index}
+                onClick={(e) => handleClick(e, index)}
+                onKeyDown={(e) => handleKeyDown(e, index)}
+                tabIndex={0}
+                className={`rounded-full relative cursor-pointer transition-all duration-300 ease-in-out px-4 py-2 mx-1 outline-none
+      ${activeIndex === index ? "active bg-white text-black" : "text-white"}`}
+              >
+                <a href={item.href} className="inline-block w-full h-full">
+                  {item.label}
+                </a>
+              </li>
             ))}
           </ul>
         </nav>
@@ -312,5 +349,6 @@ const GooeyNav = ({
     </>
   );
 };
+
 
 export default GooeyNav;

@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
 import React from "react";
-import algo from "../assets/algo.jpg"
-import intern from "../assets/intern.jpg"
-import hog from "../assets/hog.png"
-import post from "../assets/post.png"
-import pa from "../assets/pa.jpg"
-import cc from "../assets/cc.jpg"
-import hack from "../assets/hack.jpg"
+import algo from "../assets/algo.jpg";
+import intern from "../assets/intern.jpg";
+import hog from "../assets/hog.png";
+import post from "../assets/post.png";
+import pa from "../assets/pa.jpg";
+import cc from "../assets/cc.jpg";
+import hack from "../assets/hack.jpg";
 const experiences = [
   {
     title: "ATF Tech Fellow",
@@ -43,13 +43,13 @@ const experiences = [
     desc: "Leading and mentoring open-source contributors under GSSoC'25. Managing PR reviews, contributor onboarding, and project enhancements.",
     img: pa,
   },
-//   {
-//     title: "Mentee",
-//     org: "Codescafe Mentorship Program",
-//     duration: "Feb 2024 - April 2024",
-//     desc: "Mentored under industry experts on DSA, system design, and full-stack projects. Collaborated with peers on weekly challenges and reviews.",
-//     img: "/images/codescafe.png",
-//   },
+  //   {
+  //     title: "Mentee",
+  //     org: "Codescafe Mentorship Program",
+  //     duration: "Feb 2024 - April 2024",
+  //     desc: "Mentored under industry experts on DSA, system design, and full-stack projects. Collaborated with peers on weekly challenges and reviews.",
+  //     img: "/images/codescafe.png",
+  //   },
   {
     title: "Participant - Hackstreet",
     org: "JIIT Noida",
@@ -66,7 +66,6 @@ const experiences = [
   },
 ];
 
-
 export default function DetailedExperience() {
   return (
     <section id="experience" className="py-20 px-4 sm:px-10 bg-black">
@@ -76,10 +75,13 @@ export default function DetailedExperience() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="text-4xl sm:text-5xl font-bold text-white text-center mb-16 mt-16 relative inline-block" style={{ fontFamily: "Orbitron, sans-serif" }}
+        className="text-4xl sm:text-5xl font-bold text-white text-center mb-16 mt-16 relative inline-block"
+        style={{ fontFamily: "Orbitron, sans-serif" }}
       >
-        <span className="relative z-10">Experience & Achievements <span className="absolute bottom-0 left-0 w-full h-[2px] bg-white rounded-full" /></span>
-        
+        <span className="relative z-10">
+          Achievements & Certifications {" "}
+          <span className="absolute bottom-0 left-0 w-full h-[2px] bg-white rounded-full" />
+        </span>
       </motion.h2>
 
       {/* Timeline */}
@@ -97,23 +99,22 @@ export default function DetailedExperience() {
             <span className="absolute -left-6 top-4 w-4 h-4 bg-cyan-500 rounded-full shadow-md shadow-fuchsia-500/30" />
 
             {/* Card */}
-            <div className="bg-zinc-900 p-6 rounded-xl border border-white/10 shadow-md hover:shadow-fuchsia-500/30 transition-all duration-300">
-              <div className="flex flex-row items-center justify-center sm:flex-row sm:items-start sm:gap-6">
+            <div className="bg-zinc-900 p-5 sm:p-6 rounded-xl border border-white/10 shadow-md hover:shadow-fuchsia-500/30 transition-all duration-300">
+              <div className="flex flex-col sm:flex-row items-center sm:items-start sm:gap-6">
+                {/* Responsive Image */}
                 <img
                   src={exp.img}
                   alt={exp.title}
-                  className="w-64 h-48 object-contain rounded-lg border border-zinc-700 mb-4 sm:mb-0"
+                  className="w-full sm:w-64 h-48 object-cover rounded-lg border border-zinc-700 mb-4 sm:mb-0"
                 />
-                <div>
+
+                {/* Text Content */}
+                <div className="text-center sm:text-left">
                   <h3 className="text-xl font-semibold text-white">
                     {exp.title}
                   </h3>
-                  <p className="text-sm text-cyan-400 italic">
-                    {exp.org}
-                  </p>
-                  <p className="text-sm text-gray-400 mb-2">
-                    {exp.duration}
-                  </p>
+                  <p className="text-sm text-cyan-400 italic">{exp.org}</p>
+                  <p className="text-sm text-gray-400 mb-2">{exp.duration}</p>
                   <p className="text-sm text-gray-300">{exp.desc}</p>
                 </div>
               </div>
