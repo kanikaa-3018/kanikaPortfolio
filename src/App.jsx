@@ -15,6 +15,7 @@ import DetailedProjects from "./pages/DetailedProjects";
 import DetailedExperience from "./pages/DetailedExperience";
 import DetailedSkills from "./pages/DetailedSkills";
 import MyExperience from "./pages/MyExperience.jsx"
+import AboutMe from "./pages/About.jsx"
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
         <Route path="/myachievements" element={<DetailedExperience />} />
         <Route path="/myskills" element={<DetailedSkills />} />
         <Route path="/myexperience" element={<MyExperience />} />
+        <Route path="/about" element={<AboutMe/>} />
       </Routes>
     </Router>
   );
