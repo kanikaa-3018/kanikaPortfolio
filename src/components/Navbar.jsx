@@ -66,8 +66,8 @@ const Navbar = () => {
   return (
     <>
       <div className="fixed top-0 left-0 w-full h-[80px] bg-[#0e0e0e] z-[1000] shadow-lg">
-        <div className="flex items-center justify-between h-full px-4 sm:px-6">
-          {/* Left: Logo */}
+        <div className="max-w-7xl mx-auto flex items-center justify-between h-full px-4 sm:px-6">
+          {/* Logo */}
           <div
             className="text-white text-xl font-bold tracking-widest"
             style={{ fontFamily: "Orbitron, sans-serif" }}
@@ -81,8 +81,8 @@ const Navbar = () => {
             />
           </div>
 
-          {/* Center: GooeyNav only on md+ screens */}
-          <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2">
+          {/* Gooey Nav: only visible on md+ */}
+          <div className="hidden md:flex justify-center flex-1">
             <GooeyNav
               items={items}
               particleCount={15}
@@ -95,7 +95,7 @@ const Navbar = () => {
             />
           </div>
 
-          {/* Right: Mobile Menu Toggle */}
+          {/* Burger menu: visible on small screens only */}
           <div className="md:hidden">
             <button
               onClick={toggleMenu}
@@ -145,7 +145,7 @@ const Navbar = () => {
                     <Link
                       to={item.href}
                       onClick={closeMenu}
-                      className="text-white text-lg font-semibold relative block w-full transition duration-300 hover:text-cyan-400 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 hover:after:w-full after:bg-cyan-400 after:transition-all after:duration-300"
+                      className="text-white text-lg font-semibold relative block w-full transition duration-300 hover:text-cyan-400 focus:text-cyan-400 active:text-cyan-400 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 hover:after:w-full focus:after:w-full active:after:w-full after:bg-cyan-400 after:transition-all after:duration-300"
                     >
                       {item.label}
                     </Link>
