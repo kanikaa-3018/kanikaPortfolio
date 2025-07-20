@@ -41,7 +41,7 @@
 
 // export default Navbar;
 
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import GooeyNav from "../components/GooeyNav/GooeyNav.jsx";
 import { FiMenu, FiX } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
@@ -55,13 +55,31 @@ const items = [
   { label: "Projects", href: "/myprojects" },
   { label: "Experience", href: "/myexperience" },
   { label: "Achievements", href: "/myachievements" },
-  // { label: "Contact", href: "/contact" },
 ];
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const toggleMenu = () => setMenuOpen(!menuOpen);
-  const closeMenu = () => setMenuOpen(false);
+  const sidebarRef = useRef(null);
+
+  // Close sidebar on outside click
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+        setMenuOpen(false);
+      }
+    };
+    if (menuOpen) {
+      document.body.style.overflow = "hidden";
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.body.style.overflow = "auto";
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.body.style.overflow = "auto";
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [menuOpen]);
 
   return (
     <>
@@ -81,7 +99,7 @@ const Navbar = () => {
             />
           </div>
 
-          {/* Gooey Nav: only visible on md+ */}
+          {/* Gooey Nav: only on md+ screens */}
           <div className="hidden md:flex justify-center flex-1">
             <GooeyNav
               items={items}
@@ -95,11 +113,11 @@ const Navbar = () => {
             />
           </div>
 
-          {/* Burger menu: visible on small screens only */}
+          {/* Burger Icon for Mobile */}
           <div className="md:hidden">
             <button
-              onClick={toggleMenu}
-              className="text-white text-3xl transition-transform duration-300"
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="text-white text-3xl"
             >
               {menuOpen ? <FiX /> : <FiMenu />}
             </button>
@@ -111,23 +129,23 @@ const Navbar = () => {
       <AnimatePresence>
         {menuOpen && (
           <>
-            {/* Overlay to capture outside clicks */}
+            {/* Overlay */}
             <motion.div
               className="fixed inset-0 bg-black/50 z-[1080]"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              onClick={closeMenu}
+              onClick={() => setMenuOpen(false)}
             />
 
-            {/* Sidebar itself */}
+            {/* Sidebar */}
             <motion.div
+              ref={sidebarRef}
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
               className="fixed top-0 right-0 h-screen w-[75%] sm:w-[60%] bg-black/95 backdrop-blur-md z-[1090] p-6 shadow-2xl flex flex-col items-start gap-6"
-              onClick={(e) => e.stopPropagation()} // Prevent overlay click from bubbling
             >
               <h2
                 className="text-white text-3xl font-bold mb-6 mx-auto"
@@ -144,8 +162,8 @@ const Navbar = () => {
                   <li key={index} className="w-full">
                     <Link
                       to={item.href}
-                      onClick={closeMenu}
-                      className="text-white text-lg font-semibold relative block w-full transition duration-300 hover:text-cyan-400 focus:text-cyan-400 active:text-cyan-400 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 hover:after:w-full focus:after:w-full active:after:w-full after:bg-cyan-400 after:transition-all after:duration-300"
+                      onClick={() => setMenuOpen(false)}
+                      className="text-white text-lg font-semibold relative block w-full transition duration-300 hover:text-cyan-400 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 hover:after:w-full after:bg-cyan-400 after:transition-all after:duration-300"
                     >
                       {item.label}
                     </Link>

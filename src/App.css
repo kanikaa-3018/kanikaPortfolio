@@ -5,6 +5,10 @@
   background-color: black;
 }
 
+html, body {
+  overflow-x: hidden;
+}
+
 :root {
   --pointer-x: 50%;
   --pointer-y: 50%;
