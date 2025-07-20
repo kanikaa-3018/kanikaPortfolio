@@ -162,8 +162,8 @@ const Navbar = () => {
                   <li key={index} className="w-full">
                     <Link
                       to={item.href}
-                      onClick={() => setMenuOpen(false)}
-                      className="text-white text-lg font-semibold relative block w-full transition duration-300 hover:text-cyan-400 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 hover:after:w-full after:bg-cyan-400 after:transition-all after:duration-300"
+                      onClick={closeMenu}
+                      className="text-white text-lg font-semibold relative block w-full transition duration-300 hover:text-cyan-400 focus:text-cyan-400 active:text-cyan-400 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 hover:after:w-full focus:after:w-full active:after:w-full after:bg-cyan-400 after:transition-all after:duration-300"
                     >
                       {item.label}
                     </Link>
