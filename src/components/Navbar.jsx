@@ -42,11 +42,11 @@
 // export default Navbar;
 
 import React, { useState, useRef, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import GooeyNav from "../components/GooeyNav/GooeyNav.jsx";
 import { FiMenu, FiX } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
-import { Link } from "react-router-dom";
-import ks from "../../public/ks.png";
+import ks from "../../public/ks.png"; // adjust path if needed
 
 const items = [
   { label: "Home", href: "/" },
@@ -60,14 +60,17 @@ const items = [
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const sidebarRef = useRef(null);
+  const location = useLocation();
 
-  // Close sidebar on outside click
+  const closeMenu = () => setMenuOpen(false);
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
         setMenuOpen(false);
       }
     };
+
     if (menuOpen) {
       document.body.style.overflow = "hidden";
       document.addEventListener("mousedown", handleClickOutside);
@@ -75,6 +78,7 @@ const Navbar = () => {
       document.body.style.overflow = "auto";
       document.removeEventListener("mousedown", handleClickOutside);
     }
+
     return () => {
       document.body.style.overflow = "auto";
       document.removeEventListener("mousedown", handleClickOutside);
@@ -83,23 +87,15 @@ const Navbar = () => {
 
   return (
     <>
+      {/* Navbar */}
       <div className="fixed top-0 left-0 w-full h-[80px] bg-[#0e0e0e] z-[1000] shadow-lg">
         <div className="max-w-7xl mx-auto flex items-center justify-between h-full px-4 sm:px-6">
           {/* Logo */}
-          <div
-            className="text-white text-xl font-bold tracking-widest"
-            style={{ fontFamily: "Orbitron, sans-serif" }}
-          >
-            <img
-              src={ks}
-              alt="logo"
-              width={48}
-              height={48}
-              className="object-contain"
-            />
+          <div className="text-white text-xl font-bold tracking-widest" style={{ fontFamily: "Orbitron, sans-serif" }}>
+            <img src={ks} alt="logo" width={48} height={48} className="object-contain" />
           </div>
 
-          {/* Gooey Nav: only on md+ screens */}
+          {/* Gooey Nav: only on md+ */}
           <div className="hidden md:flex justify-center flex-1">
             <GooeyNav
               items={items}
@@ -113,19 +109,16 @@ const Navbar = () => {
             />
           </div>
 
-          {/* Burger Icon for Mobile */}
+          {/* Mobile Burger Icon */}
           <div className="md:hidden">
-            <button
-              onClick={() => setMenuOpen(!menuOpen)}
-              className="text-white text-3xl"
-            >
+            <button onClick={() => setMenuOpen(!menuOpen)} className="text-white text-3xl">
               {menuOpen ? <FiX /> : <FiMenu />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Sidebar */}
+      {/* Sidebar and Overlay */}
       <AnimatePresence>
         {menuOpen && (
           <>
@@ -135,7 +128,7 @@ const Navbar = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              onClick={() => setMenuOpen(false)}
+              onClick={closeMenu}
             />
 
             {/* Sidebar */}
@@ -158,17 +151,24 @@ const Navbar = () => {
               </h2>
 
               <ul className="space-y-6 w-full">
-                {items.map((item, index) => (
-                  <li key={index} className="w-full">
-                    <Link
-                      to={item.href}
-                      onClick={closeMenu}
-                      className="text-white text-lg font-semibold relative block w-full transition duration-300 hover:text-cyan-400 focus:text-cyan-400 active:text-cyan-400 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 hover:after:w-full focus:after:w-full active:after:w-full after:bg-cyan-400 after:transition-all after:duration-300"
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
+                {items.map((item, index) => {
+                  const isActive = location.pathname === item.href;
+                  return (
+                    <li key={index} className="w-full">
+                      <Link
+                        to={item.href}
+                        onClick={closeMenu}
+                        className={`relative block w-full text-lg font-semibold transition duration-300 ${
+                          isActive ? "text-cyan-400" : "text-white"
+                        } hover:text-cyan-400 focus:text-cyan-400 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] ${
+                          isActive ? "after:w-full" : "after:w-0"
+                        } hover:after:w-full focus:after:w-full after:bg-cyan-400 after:transition-all after:duration-300`}
+                      >
+                        {item.label}
+                      </Link>
+                    </li>
+                  );
+                })}
               </ul>
             </motion.div>
           </>
