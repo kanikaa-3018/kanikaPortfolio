@@ -169,6 +169,7 @@ import myimagehu from "../assets/myimagehu.jpg";
 import PixelTransition from "../Animations/PixelTransition/PixelTransition.jsx";
 import { FiDownload, FiSend } from "react-icons/fi";
 import KANIKA_IMG from "../assets/KANIKA_IMG.png";
+import kanikaphoto from "../assets/kanikaphoto.png";
 const HeroSection = () => {
   const [isFlipped, setIsFlipped] = useState(false);
 
@@ -196,7 +197,7 @@ const HeroSection = () => {
               className="rounded-xl overflow-hidden"
               firstContent={
                 <img
-                  src={KANIKA_IMG}
+                  src={kanikaphoto}
                   alt="Kanika"
                   style={{
                     width: "100%",
@@ -398,7 +399,7 @@ const HeroSection = () => {
           handle="kanikaa-3018"
           status="Online"
           contactText="Contact Me"
-          avatarUrl={KANIKA_IMG}
+          avatarUrl={kanikaphoto}
           showUserInfo={true}
           enableTilt={true}
           onContactClick={() => console.log("Contact clicked")}

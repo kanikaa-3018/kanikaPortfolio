@@ -4,34 +4,63 @@ import { useNavigate } from "react-router-dom";
 
 const experiences = [
   {
-    title: "Software Engineering Intern",
-    company: "TechNova Solutions",
-    duration: "May 2024 - July 2024",
+    title: "SWE Co-op Intern",
+    company: "AlgoUniversity",
+    duration: "May 2025 - Present",
     description:
-      "Developed and optimized RESTful APIs using Node.js and Express, integrated MongoDB for data storage, and improved API performance by 30%.",
+      "Contributing to backend infrastructure and feature development using Node.js, PostgreSQL, and TypeScript as part of a structured co-op program.",
   },
   {
-    title: "Frontend Developer Intern",
-    company: "Creativify",
-    duration: "Jan 2024 - Apr 2024",
+    title: "Full Stack Developer Intern",
+    company: "Tinker Tutor",
+    duration: "Jul 2025 - Aug 2025",
     description:
-      "Designed responsive UI components using React and Tailwind CSS, collaborated with UI/UX designers, and enhanced mobile performance.",
+      "Worked on the core platform using MERN stack, implemented user authentication, and optimized frontend performance with efficient React patterns.",
   },
   {
-    title: "Open Source Contributor",
-    company: "GirlScript Summer of Code",
-    duration: "Summer 2023",
+    title: "Hackathon Participant",
+    company: "10+ hackathons",
+    duration: "2022 - Present",
     description:
-      "Contributed to multiple open source repositories, fixed bugs, wrote documentation, and mentored beginner contributors on Git workflows.",
+      "Participated in 10+ national and international hackathons; developed innovative solutions across domains like edtech, AI, and fintech.",
   },
   {
-    title: "Full Stack Developer (Freelance)",
-    company: "Freelance Projects",
-    duration: "Ongoing",
+    title: "Shefi'13 Scholar",
+    company: "Shefi Foundation",
+    duration: "2023",
     description:
-      "Built full-stack applications for clients, integrated third-party APIs, and deployed on platforms like Vercel and Netlify.",
+      "Selected as a Shefi'13 Scholar for academic excellence and social impact; engaged in leadership-building workshops and mentoring programs.",
+  },
+  {
+    title: "Top 2.2 Round Qualifier",
+    company: "Flipkart GRID 5.0",
+    duration: "June 2025",
+    description:
+      "Advanced to Round 2.2 among thousands of participants; solved real-world problem statements related to system design and scalability.",
+  },
+  {
+    title: "Head of Content",
+    company: "Google Developer Group (GDG), IIIT Gwalior",
+    duration: "2024 - Present",
+    description:
+      "Led content strategy for technical events, managed speaker sessions, and mentored junior members in community contributions.",
+  },
+  {
+    title: "Executive Member",
+    company: "Manchtantra (Dramatics Society)",
+    duration: "2023 - Present",
+    description:
+      "Organized and performed in college-level stage plays; contributed to scriptwriting, direction, and event coordination.",
+  },
+  {
+    title: "Finalist",
+    company: "Odoo Hackathon 2025",
+    duration: "July 2025",
+    description:
+      "Selected as a finalist team after clearing the first virtual round; showcased in the grand finale among top national teams.",
   },
 ];
+
 
 const Experience = () => {
   const navigate = useNavigate();
@@ -44,7 +73,7 @@ const Experience = () => {
       <div className="relative flex items-center justify-center mb-14 px-4 sm:px-10">
         {/* Absolutely Centered Heading */}
         <motion.h2
-          className="absolute left-1/2 transform -translate-x-1/2 text-4xl sm:text-5xl font-extrabold text-white bg-clip-text text-transparent drop-shadow-lg animate-gradient"
+          className="absolute left-1/2 transform -translate-x-1/2 text-4xl sm:text-5xl font-extrabold text-white bg-clip-text  drop-shadow-lg animate-gradient"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}

@@ -6,7 +6,11 @@ import { motion } from "framer-motion";
 
 const demoItems = [
   { link: "#", text: "LET'S", image: "https://picsum.photos/600/400?random=1" },
-  { link: "#", text: "CONNECT", image: "https://picsum.photos/600/400?random=2" },
+  {
+    link: "#",
+    text: "CONNECT",
+    image: "https://picsum.photos/600/400?random=2",
+  },
   { link: "#", text: "BUILD", image: "https://picsum.photos/600/400?random=3" },
   { link: "#", text: "TALK", image: "https://picsum.photos/600/400?random=4" },
 ];
@@ -130,9 +134,22 @@ const Contact = () => {
 
         {/* Optional: background glow / blob (subtle enhancement) */}
         <div className="absolute -z-10 top-1/3 left-1/3 w-[500px] h-[500px] bg-cyan-500 opacity-10 blur-3xl rounded-full"></div>
+
+        {/* <div
+          class="visme_d"
+          data-title="Animated Online Contact Form"
+          data-url="j0n813mg-animated-online-contact-form"
+          data-domain="forms"
+          data-full-page="false"
+          data-min-height="500px"
+          data-form-id="137218"
+        ></div> */}
+        
       </section>
     </section>
   );
 };
+
+{/* <script src="https://static-bundles.visme.co/forms/vismeforms-embed.js"></script> */}
 
 export default Contact;
